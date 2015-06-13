@@ -1,90 +1,139 @@
-<?php
-	$a = 1; ] //Global Scope.
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PHP OOP</title>
+	</head>
+	<body>
+		<?php
+			
+			function test(){
+				$a = 1;
+				echo $a;
+			}
+			test();
+		?>
 
-	function test(){
-		echo $a; // Local var scope.
-	};
+		<!-- Global scope -->
 
-	test(); // undefined var at line 5.
-?>
+		<?php
+			$x = 5;
+			$y = 10;
 
-<!-- Global scope -->
+			function myTest1(){
+				global $x, $y;
+				$y = $x + $y;
+			}
 
-<?php
-	$x = 5;
-	$y = 10;
+			myTest1();
+			echo $y;
+		?>
 
-	function myTest1(){
-		global $x, $y;
-		$y = $x + $y;
-	}
-	myTest1();
-	echo $y;
-?>
+		<?php
+			$a = 5;
+			$b = 10;
+			
+			function myTest2(){ //function.
+				$GLOBALS[ 'b' ] = $GLOBALS[ 'a' ] + $GLOBALS[ 'b' ];
+			}
+			
+			myTest2();
+			echo $b;
+		?>
 
-<?php
-	$x = 5; //var.
-	$y = 10; //var.
-	
-	function myTest2(){ //function.
-		$GLOBALS[ 'y' ] = $GLOBALS[ 'x' ] + $GLOBALS[ 'y' ];
-	}
-	
-	myTest2(); //call function.
-	echo $y; //show result.
-?>
+		<!-- static keyword -->
 
-<!-- static keyword -->
+		<?php  
+			function myTest3(){
+				static $c = 0;
+				echo $c;
+				$c++;
+			}
+			myTest3();
+			myTest3();
+			myTest3();
+		?>
 
-<?php  
-	function myTest3(){
-		static $x = 0;
-		echo $x;
-		$x++;
-	}
-	myTest3();
-	myTest3();
-	myTest3();
-?>
+		<!-- classes -->
 
-<!-- classes -->
+		<?php 
+			class myClass{
+				// class properties and methods goes in here.
+			}
 
-<?php 
-	class myClass{
-		// class properties and methods goes in here.
-	}
+			$obj0 = new myClass();
+			var_dump($obj0);	
+		?>
 
-	$obj = new myClass();
-	var_dump($obj);	
-?>
+		<!-- class properties -->
 
-<!-- class properties -->
-<?php
-	class myClass1{
-		public $prop1 = "I'm a class property";
-	}
-	
-	$obj = new myClass1();
-	
-	echo $obj->prop1; // read class properties.
-?>
+		<?php
+			class myClass1{
+				public $prop1 = "I'm a class property";
+			}
+			
+			$obj = new myClass1();
+			
+			echo $obj->prop1; // read class properties.
+		?>
 
-<!-- Class methods DA ERROR, HAY QUE REVISARLO-->
+		<!-- Class methods-->
 
-<?php 
-	class myClass2{
-		public $prop1 = "I'm a class property!";
+		<?php 
+			class myClass2{
+				public $prop2 = "I'm a class property!";
 
-		public function setProperty( $newVal ){
-			this->$prop1 = $newVal;
-		}
+				public function setProperty( $newVal ){
+					$this->prop2 = $newVal;
+				}
 
-		public function getProperty(){
-			return $this->$prop1 . "<br/>";
-		}
-	}
+				public function getProperty(){
+					return $this->prop2 . "<br/>";
+				}
+			}
 
-	$obj = new myClass2();
+			$obj1 = new myClass2();
 
-	echo $obj->getProperty(); //get the property value.
-?>
+			echo $obj1->getProperty(); //get the property value.
+
+			$obj1->setProperty("I'm a new property value"); //set a new one.
+
+			echo $obj1->getProperty(); //read it out again to show the change.
+		?>
+
+		<!-- construct and destruct -->
+
+		<?php 
+			class myClass3{
+				public $prop3 = "I'm a class property";
+
+				public function __construct(){
+					echo 'The class "', __CLASS__, '" was initiated.<br />';
+				}	
+
+				public function __destruct(){
+					echo 'The class "', __CLASS__, '" was destroyed.<br />';
+				}
+			}
+
+			$obj2 = new myClass3;
+		?>
+
+		<?php 
+			class MyClass4{
+				const CONSTANT = 'constant value';
+
+				function showConstant() {
+					echo self::CONSTANT;
+				}
+			}
+
+			echo MyClass4::CONSTANT;
+
+			$class = new MyClass4();
+			$class-> showConstant();
+
+			echo $class::CONSTANT;
+		?>
+
+	</body>
+</html>
