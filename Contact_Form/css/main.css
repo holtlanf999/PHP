@@ -1,0 +1,38 @@
+body{
+	background-color: #000;
+}
+
+#contact-form{
+	background-color: #c09e4e;
+	border: 0.2em solid #404040;
+	margin: 4em auto;
+	padding: 0 0 1em 0;
+	text-align: center;
+	width: 80%;
+}
+
+.hidden{
+	visibility: hidden;
+}
+
+input[type="email"], [type= "text"]{
+	border-color: transparent;
+	border-radius: 0.5em;
+	display: block;
+	margin: 0.5em auto;
+	width: 80%;
+}
+
+textarea{
+	border-color: transparent;
+	border-radius: 0.5em;
+	display: block;
+	margin: 0.5em auto;
+	width: 80%; 
+}
+
+.button{
+	border-color: transparent;
+	border-radius: 0.5em;
+	margin: 0.5em 8em 0 8em;
+}
