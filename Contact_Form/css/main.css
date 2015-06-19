@@ -1,14 +1,17 @@
 body{
-	background-color: #000;
+	background-image: url( http://localhost/Contact_Form/img/bg.jpg );
+	background-size: 100%;
 }
 
 #contact-form{
-	background-color: #c09e4e;
-	border: 0.2em solid #404040;
-	margin: 4em auto;
-	padding: 0 0 1em 0;
+	background-color: rgba( 255, 255, 255, 0.2 );
+	border-radius: 2em;
+	color: #404040;
+	font-family: helvetica;
+	margin: 10em auto;
+	padding: 0.5em 0;
 	text-align: center;
-	width: 80%;
+	width: 50%;
 }
 
 .hidden{
@@ -16,23 +19,36 @@ body{
 }
 
 input[type="email"], [type= "text"]{
+	background-color: rgba( 255, 255, 255, 0.6 );
 	border-color: transparent;
 	border-radius: 0.5em;
+	color: #000;
 	display: block;
-	margin: 0.5em auto;
+	margin: 0.1em auto;
 	width: 80%;
 }
 
+::-webkit-input-placeholder{
+	color: #404040;
+}
+
 textarea{
+	background-color: rgba( 255, 255, 255, 0.6 );
 	border-color: transparent;
 	border-radius: 0.5em;
+	color: #000;
 	display: block;
 	margin: 0.5em auto;
 	width: 80%; 
 }
 
 .button{
+	background-color: rgba( 255, 255, 255, 0.6 );
 	border-color: transparent;
 	border-radius: 0.5em;
 	margin: 0.5em 8em 0 8em;
 }
+
+.message{
+	display: block;
+}	
